@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "npm start"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jpc0023/Team-Profile-Generator/issues"
   },
-  "homepage": "https://github.com/jpc0023/Team-Profile-Generator#readme"
+  "homepage": "https://github.com/jpc0023/Team-Profile-Generator#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
 }
