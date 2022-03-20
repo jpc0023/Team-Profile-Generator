@@ -1,3 +1,4 @@
+const { expect } = require('@jest/globals');
 const Employee = require('../lib/Employee.js');
 
 test('creates an employee object', () => {
@@ -39,4 +40,10 @@ test('getEmail method', () => {
     const testEmail = "test@test.com";
     const employeeCreate = new Employee('Sally', 1, testEmail);
     expect(employeeCreate.getEmail()).toBe(testEmail);
+})
+
+test('getRole method', () => {
+    const role = 'Employee';
+    const employeeCreate = new Employee('Sally', 1, 'test@test.com');
+    expect(employeeCreate.getRole()).toBe('Employee');
 })
