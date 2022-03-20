@@ -16,7 +16,6 @@ test('getGithub() module', () => {
 })
 
 test('getRole() module', () => {
-    const role = 'Engineer';
     const employeeCreate = new Engineer('Sally', 1, 'test@test.com', 2202, 'testtestgithub');
     expect(employeeCreate.getRole()).toBe('Engineer');
 })
