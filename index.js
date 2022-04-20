@@ -4,64 +4,57 @@ const Intern = require('./lib/Intern');
 const { writeFile, copyFile } = require('./utils/generate-site.js');
 const inquirer = require('inquirer');
 const path = require('path');
-const fs = require('fs');
-const generateTeams = require('./src/page-template.js');
-const generatePage = require('./src/page-template.js');
+const generatePage = require('./src/page-template');
 
 const teamData = []
 
-const teamDetails = () => {
-    return inquirer.prompt([
-        {
-            type: 'list',
-            message: 'What type of employee are you adding?',
-            name: 'employeeType',
-            choices: ['Manager', 'Engineer', 'Intern', 'No more team members are needed.']
-        }
-    ])
-    .then((answers) => {
-        if (answers.employeeType === 'Manager') {
-            addManager();
-        } else if (answers.employeeType === 'Engineer') {
-            addEngineer();
-        } else if (answers.employeeType === 'Intern') {
-            addIntern();
-        } else {
-            return generatePage(teamData);
-        }
-    });
-};
-
 const addManager = () => {
-    inquirer.prompt([
+    return inquirer.prompt([
         {
             type: 'input',
             name: 'name',
-            message: "What is the manager's name?"
+            message: "What is the manager's name?",
         },
         {
             type: 'input',
             name: 'id',
-            message: "What is the manager's id?"
+            message: "What is the manager's id?",
         },
         {
             type: 'input',
             name: 'email',
-            message: "What is the manager's email?"
+            message: "What is the manager's email?",
         },
         {
             type: 'input',
             name: 'officeNumber',
-            message: "What is the manager's office number?"
+            message: "What is the manager's office number?",
+        },
+        {
+            type: 'list',
+            name: 'addMember',
+            message: "What type of team member would you like to add?",
+            choices: ['Engineer', 'Intern', 'No more team members are needed.']
         }
-    ]).then(answers => {
-        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
-        teamData.push(manager);
-        teamDetails();
-    });
-}
+    ])
+    .then((answers) => {
+        const manager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber)
+        teamData.push(manager)
 
-const addEngineer = () => {
+        if (answers.addMember === 'Engineer') {
+            addEngineer();
+            
+        } else if (answers.addMember === 'Intern') {
+            addIntern();
+            
+        } else {
+            writeFile(generatePage(teamData));
+            copyFile();
+        }
+    });
+};
+
+function addEngineer() {
     inquirer.prompt([
         {
             type: 'input',
@@ -81,14 +74,30 @@ const addEngineer = () => {
         {
             type: 'input',
             name: 'github',
-            message: "What is the engineer's github URL?"
+            message: "What is the engineer's github username?"
+        },
+        {
+            type: 'list',
+            name: 'addMember',
+            message: "What type of team member would you like to add?",
+            choices: ['Engineer', 'Intern', 'No more team members are needed.']
         }
     ]).then(answers => {
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         teamData.push(engineer);
-        teamDetails();
+        
+        if (answers.addMember === 'Engineer') {
+            addEngineer();
+            
+        } else if (answers.addMember === 'Intern') {
+            addIntern();
+            
+        } else {
+            writeFile(generatePage(teamData));
+            copyFile();
+        }
     });
-};
+}
 
 const addIntern = () => {
     inquirer.prompt([
@@ -111,27 +120,44 @@ const addIntern = () => {
             type: 'input',
             name: 'school',
             message: "What is the intern's school name?"
+        },
+        {
+            type: 'list',
+            name: 'addMember',
+            message: "What type of team member would you like to add?",
+            choices: ['Engineer', 'Intern', 'No more team members are needed.']
         }
     ]).then(answers => {
         const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
         teamData.push(intern);
-        teamDetails();
+        
+        if (answers.addMember === 'Engineer') {
+            addEngineer();
+            
+        } else if (answers.addMember === 'Intern') {
+            addIntern();
+            
+        } else {
+            writeFile(generatePage(teamData));
+            copyFile();
+        }
     });
 };
-teamDetails()
-    .then(teamData => {
-        return generatePage(teamData);
-    })
-    .then(generatePage => {
-        return writeFile(employees);
-    })
-    .then(writeFileResponse => {
-        console.log(writeFileResponse);
-        return copyFile();
-    })
-    .then(copyFileResponse => {
-        console.log(copyFileResponse);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+
+addManager();
+    // .then(teamData => {
+    //     return generatePage(teamData);
+    // })
+    // .then(pageHTML => {
+    //     return writeFile(pageHTML);
+    // })
+    // .then(writeFileResponse => {
+    //     console.log(writeFileResponse);
+    //     return copyFile();
+    // })
+    // .then(copyFileResponse => {
+    //     console.log(copyFileResponse);
+    // })
+    // .catch(err => {
+    //     console.log(err);
+    // });
