@@ -7,7 +7,7 @@ const generateManager = manager => {
 
                 <div class='card'>
 
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-manager text-white">
                         <h2 class='card-title'>${manager.getName()}</h2>
                         <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
                     </div>
@@ -27,7 +27,7 @@ const generateEngineer = engineer => {
 
                 <div class="card">
 
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-engineer text-white">
                         <h2 class="card-title">${engineer.getName()}</h2>
                         <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>${engineer.getRole()}</h3>
                     </div>
@@ -47,7 +47,7 @@ const generateIntern = intern => {
 
                 <div class="card">
 
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-intern text-white">
                         <h2 class="card-title">${intern.getName()}</h2>
                         <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>${intern.getRole()}</h3>
                     </div>
@@ -116,8 +116,8 @@ return `
     <body>
         <div class="container-fluid">
             <div class="row rowheader">
-                <div class="col-12 jumbotron mb-3 bg-danger">
-                    <h1 class="text-center text-white">My Team</h1>
+                <div class="col-12 jumbotron mb-3 bg-custom">
+                    <h1 class="text-center text-title">My Team</h1>
                 </div>
             </div>
         </div>
