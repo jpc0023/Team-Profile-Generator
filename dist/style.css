@@ -1,0 +1,117 @@
+.bg-custom {
+    /* background: linear-gradient(90deg, #d4af37, #a97142, #c4cace, #000000, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), #c4cace, #a97142, #d4af37); */
+    background: radial-gradient(circle at 50% 50%, #134870, #144a73, #17517a, #1b5b84, #216890, #28769d, #3085a9, #3993b4, #429fbe, #50a6be, #59aabf, #5cabbf);
+    opacity: 95%;
+}
+
+body {
+    background-image: url('../src/annie.jpg');
+    background-size: cover;
+
+    }
+
+.text-title {
+    color: white;
+}
+
+.text-center {
+    font-size: 6.5rem;
+    padding-bottom: 1rem;
+}
+
+.container-fluid {
+    padding-top: 4px;
+    width: auto;
+}
+
+.rowheader {
+    margin: auto -9px;
+  
+}
+
+.container {
+    display: flex;
+    width: 90%;
+
+}
+
+.row {
+    justify-content: center;
+    
+}
+
+.jumbotron {
+    height: auto;
+    padding: 10px;
+    margin: auto;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.card {
+    margin: 20px 20px;
+    box-shadow: 2px 2px 4px rgb(0, 0, 0);
+    width: 20rem;
+    border: 1px solid slategray;
+}
+
+.list-group-item {
+    border: 0ch;
+    padding: 0.85rem 0.5rem;
+}
+
+.bg-manager {
+    background: radial-gradient(circle at 50% 50%, #d4af37, #c8a32b, #b49327, #a08222, #8c721e, #78621a, #645115, #504111, #3c310d);
+}
+
+.text-manager {
+    color: blue;
+}
+
+
+
+.bg-engineer {
+    background: radial-gradient(circle at 50% 50%, #c4cace, #b0b8bd, #9ca6ad, #88949c, #74828c, #637078, #535d64, #424a50, #32383c);
+}
+
+.text-engineer {
+    color: green;
+}
+
+.bg-intern {
+    background: radial-gradient(circle at 50% 50%, #a97142, #9a673c, #8a5c36, #7b5230, #6c482a, #5c3e24, #4d331e, #3d2918);
+}
+
+.text-intern {
+    color: red;
+}
+
+.text-white {
+    color: black;
+    backdrop-filter:inherit;
+}
+.card-title {
+    color: black;
+    /* font-weight: bold; */
+}
+.card-header {
+    padding: 1.95rem 1.95rem;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.494);
+    border-radius: 25px;
+}
+
+.bg-header {
+    background-color: black;
+}
+
+.card-body {
+    padding: 1.2rem 1.2rem;
+    margin: auto;
+}
+
+h3 {
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: normal;
+    text-align: right;
+    margin-right: 5px;
+}

@@ -38,7 +38,7 @@ const addManager = () => {
         }
     ])
     .then((answers) => {
-        const manager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber)
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
         teamData.push(manager)
 
         if (answers.addMember === 'Engineer') {
